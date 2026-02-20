@@ -1,0 +1,11 @@
+age,gender,height,weight,activity_level,goal,calories
+22,Male,170,75,Moderate,Weight Loss,1800
+25,Female,160,60,Light,Maintain Weight,1900
+30,Male,180,85,Active,Weight Gain,2800
+28,Female,165,70,Sedentary,Weight Loss,1500
+35,Male,175,90,Moderate,Weight Loss,2000
+40,Female,155,65,Light,Maintain Weight,1700
+27,Male,172,78,Active,Weight Gain,3000
+23,Female,162,55,Moderate,Maintain Weight,2100
+29,Male,168,82,Sedentary,Weight Loss,1700
+32,Female,158,68,Light,Weight Loss,1600
