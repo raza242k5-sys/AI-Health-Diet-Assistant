@@ -25,13 +25,3 @@ An AI-powered web application that provides personalized health analysis and die
 1. Clone repository
 2. Install dependencies:
 
-## 📸 Screenshots
-
-### Dashboard View
-![dashboard](Images/dashboard-view.png)
-
-### Chatbot Response
-![chatbot](Images/chatbot-response.png)
-
-### BMI Analysis
-![bmi](Images/bmi-analysis.png)
