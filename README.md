@@ -28,10 +28,10 @@ An AI-powered web application that provides personalized health analysis and die
 ## 📸 Screenshots
 
 ### Dashboard View
-![Dashboard](images/dashboard-view.png)
+![dashboard](Images/dashboard-view.png)
 
 ### Chatbot Response
-![Chatbot](images/chatbot-response.png)
+![chatbot](Images/chatbot-response.png)
 
 ### BMI Analysis
-![BMI](images/bmi-analysis.png)
+![bmi](Images/bmi-analysis.png)
