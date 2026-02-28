@@ -1,8 +1,6 @@
 import pandas as pd
 from sklearn.ensemble import RandomForestRegressor
 from sklearn.preprocessing import LabelEncoder
-from sklearn.model_selection import train_test_split
-from sklearn.metrics import r2_score
 
 # ==============================
 # Load Dataset
@@ -38,30 +36,15 @@ y = data["calories"]
 
 
 # ==============================
-# Train / Test Split
+# Model Training (Full Dataset)
 # ==============================
 
-X_train, X_test, y_train, y_test = train_test_split(
-    X, y, test_size=0.2, random_state=42
+model = RandomForestRegressor(
+    n_estimators=200,
+    random_state=42
 )
 
-
-# ==============================
-# Model Training
-# ==============================
-
-model = RandomForestRegressor(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
-
-
-# ==============================
-# Model Evaluation
-# ==============================
-
-predictions = model.predict(X_test)
-r2 = r2_score(y_test, predictions)
-
-print(f"Model R² Score: {round(r2, 3)}")
+model.fit(X, y)
 
 
 # ==============================
@@ -70,12 +53,12 @@ print(f"Model R² Score: {round(r2, 3)}")
 
 def predict_calories(age, gender, height, weight, activity, goal):
     try:
-        # Encode inputs
+        # Encode categorical inputs
         gender_encoded = le_gender.transform([gender])[0]
         activity_encoded = le_activity.transform([activity])[0]
         goal_encoded = le_goal.transform([goal])[0]
 
-        # Create DataFrame (fixes sklearn feature name warning)
+        # Create DataFrame (prevents sklearn warning)
         input_df = pd.DataFrame([{
             "age": age,
             "gender": gender_encoded,
