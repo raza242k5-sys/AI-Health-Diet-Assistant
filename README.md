@@ -92,7 +92,7 @@ It calculates BMI, predicts daily calorie requirements using a Random Forest mod
 Computer Engineering Student | AI & Machine Learning Enthusiast  
 
 🔗 GitHub: https://github.com/raza242k5-sys  
-🔗 LinkedIn: linkedin.com/in/razarahman245
+🔗 LinkedIn: https://linkedin.com/in/razarahman245
 
 
 
