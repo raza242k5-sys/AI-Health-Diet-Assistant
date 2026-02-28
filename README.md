@@ -87,7 +87,9 @@ It calculates BMI, predicts daily calorie requirements using a Random Forest mod
 ---
 
 👨‍💻 Author
+
 Raza Rahman
+
 Retrieval-Augmented Generation AI System
 2026
 
