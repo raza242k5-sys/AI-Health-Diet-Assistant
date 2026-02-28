@@ -36,6 +36,39 @@ It calculates BMI, predicts daily calorie requirements using a Random Forest mod
 ---
 
 
+## 📊 Model Overview & Performance
+
+The calorie prediction module uses a **Random Forest Regressor**, an ensemble-based machine learning algorithm well-suited for structured tabular data.
+
+### 🔍 Dataset Features:
+- Age  
+- Gender  
+- Height  
+- Weight  
+- Activity Level  
+- Fitness Goal  
+
+### ⚙ Model Training Approach:
+- Categorical features encoded using Label Encoding  
+- Random Forest with 200 decision trees  
+- Model trained on the complete dataset  
+
+Due to the limited size of the structured dataset, the model is trained on the full dataset to ensure stable and consistent predictions.
+
+### 🧠 Why Random Forest?
+- Handles non-linear relationships effectively  
+- Reduces overfitting using ensemble learning  
+- Performs strongly on structured health data  
+
+This implementation demonstrates a complete machine learning pipeline including:
+- Data preprocessing  
+- Feature encoding  
+- Model training  
+- Real-time prediction integration within a web application  
+
+---
+
+
 ## 📦 How to Run
 
 1. Clone the repository:
