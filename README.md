@@ -122,7 +122,9 @@ This implementation demonstrates a complete machine learning pipeline including:
 ## 👨‍💻 Author
 
 **Raza Rahman**  
-Computer Engineering Student | AI & Machine Learning Enthusiast  
+Computer Engineering Student 
+
+AI Developer 
 
 🔗 GitHub: https://github.com/raza242k5-sys  
 🔗 LinkedIn: https://linkedin.com/in/razarahman245
