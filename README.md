@@ -121,7 +121,7 @@ This implementation demonstrates a complete machine learning pipeline including:
 
 ## 👨‍💻 Author
 
-**Raza Rahman**  
+**Raza Ur Rahman**  
 Computer Engineering Student 
 
 AI Developer 
