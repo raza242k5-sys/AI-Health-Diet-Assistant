@@ -1,5 +1,11 @@
 # 🩺 AI Health & Diet Recommendation System
 
+🚀 Developed and deployed an AI-powered health & diet assistant using Machine Learning and LLM integration.
+
+
+## 🌐 Live Demo
+🔗 https://raza242k5-sys-ai-health-diet-system-app-e2vc1h.streamlit.app/
+
 An intelligent healthcare web application that combines **Machine Learning + LLM (AI Chatbot)** to provide personalized diet plans, calorie prediction, and smart health guidance.
 
 🚀 Built using Machine Learning + LLM integration to simulate a real-world AI healthcare assistant.
