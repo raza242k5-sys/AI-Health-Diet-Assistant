@@ -101,40 +101,36 @@ The system uses a **Random Forest Regressor** for calorie prediction.
 ```bash
 git clone https://github.com/raza242k5-sys/AI-Health-Diet-System.git
 cd AI-Health-Diet-System
+'''
 
 2️⃣ Install Dependencies
-
 pip install -r requirements.txt
 
 3️⃣ Add API Key
-
-Create a .env file in the root directory:
-
+Create .env file:
 OPENROUTER_API_KEY=your_api_key_here
 
-4️⃣ Run the Application
-
+4️⃣ Run App
 streamlit run app.py
 
 🔐 Important
-
 Do NOT upload .env file to GitHub
-Keep your API key secure
+Keep API key secure
+
 
 💡 Future Improvements
-
 User login & history tracking
 Database integration
 PDF health report generation
 Deep learning food recognition
 Real-time fitness tracking
 
-👨‍💻 Author
 
+
+👨‍💻 Author
 Raza Ur Rahman
 Computer Engineering Student
 AI Developer
 
-🔗 GitHub
-
-🔗 LinkedIn
+🔗 GitHub: https://github.com/raza242k5-sys
+🔗 LinkedIn: https://linkedin.com/in/razarahman242k5
