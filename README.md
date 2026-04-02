@@ -101,7 +101,7 @@ The system uses a **Random Forest Regressor** for calorie prediction.
 ```bash
 git clone https://github.com/raza242k5-sys/AI-Health-Diet-System.git
 cd AI-Health-Diet-System
-'''
+```
 
 2️⃣ Install Dependencies
 pip install -r requirements.txt
