@@ -6,104 +6,159 @@ from recommendation_engine import diet_recommendation
 from ml_model import predict_calories
 from chatbot import ask_health_question
 
-# ==============================
-# Page Configuration
-# ==============================
-
+# =============================
+# Page Config
+# =============================
 st.set_page_config(
     page_title="AI Health Assistant",
-    page_icon="🧠",
+    page_icon="🩺",
     layout="wide"
 )
 
-st.title("🧠 AI Health & Diet Recommendation System")
+# =============================
+# Custom Styling
+# =============================
+st.markdown("""
+<style>
+.main-title {
+    font-size: 38px;
+    font-weight: bold;
+    color: #2E86C1;
+}
+.section {
+    background-color: white;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+</style>
+""", unsafe_allow_html=True)
 
-# ==============================
+# =============================
+# Title
+# =============================
+st.markdown('<div class="main-title">🩺 AI Health & Diet Assistant</div>', unsafe_allow_html=True)
+
+# =============================
 # Sidebar Inputs
-# ==============================
+# =============================
+st.sidebar.header("🧾 Patient Details")
 
-st.sidebar.header("Enter Your Details")
-
-age = st.sidebar.number_input("Age", min_value=10, max_value=100, value=25)
+age = st.sidebar.number_input("Age", 10, 100)
 gender = st.sidebar.selectbox("Gender", ["Male", "Female"])
-height = st.sidebar.number_input("Height (cm)", min_value=100, max_value=220, value=170)
-weight = st.sidebar.number_input("Weight (kg)", min_value=30, max_value=200, value=70)
-activity = st.sidebar.selectbox("Activity Level", ["Sedentary", "Light", "Moderate", "Active"])
-goal = st.sidebar.selectbox("Goal", ["Weight Loss", "Weight Gain", "Maintain Weight"])
+height = st.sidebar.number_input("Height (cm)", 100, 220)
+weight = st.sidebar.number_input("Weight (kg)", 30, 200)
 
-# ==============================
+activity = st.sidebar.selectbox(
+    "Activity Level",
+    ["Sedentary", "Light", "Moderate", "Active"]
+)
+
+goal = st.sidebar.selectbox(
+    "Goal",
+    ["Weight Loss", "Weight Gain", "Maintain Weight"]
+)
+
+diet_type = st.sidebar.selectbox(
+    "Diet Type",
+    ["Vegetarian", "Non-Vegetarian"]
+)
+
+gym = st.sidebar.selectbox("Workout", ["No", "Yes"])
+
+disease = st.sidebar.selectbox(
+    "Health Condition",
+    ["None", "Diabetes", "Heart Disease"]
+)
+
+# =============================
+# Always Calculate Data (FIXED)
+# =============================
+bmi = calculate_bmi(weight, height)
+category = bmi_category(bmi)
+
+predicted_calories = predict_calories(
+    age, gender, height, weight, activity, goal
+)
+
+final_calories, meal_plan = diet_recommendation(
+    predicted_calories, goal, diet_type, gym, disease
+)
+
+# =============================
 # Generate Plan Button
-# ==============================
+# =============================
+if st.sidebar.button("🧠 Generate Health Plan"):
 
-if st.sidebar.button("Generate Plan"):
+    st.markdown('<div class="section">', unsafe_allow_html=True)
+    st.subheader("📊 Health Analysis")
 
-    # Input validation
-    if weight <= 0 or height <= 0:
-        st.error("⚠ Height and Weight must be greater than 0.")
-    else:
-        try:
-            with st.spinner("Generating your personalized health plan..."):
+    col1, col2, col3 = st.columns(3)
+    col1.metric("BMI", bmi)
+    col2.metric("Category", category)
+    col3.metric("Calories", f"{final_calories} kcal")
 
-                # BMI Calculation
-                bmi = calculate_bmi(weight, height)
-                category = bmi_category(bmi)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-                # ML Prediction
-                predicted_calories = predict_calories(
-                    age, gender, height, weight, activity, goal
-                )
+    # Diet Plan
+    st.markdown('<div class="section">', unsafe_allow_html=True)
+    st.subheader("🍽 Recommended Diet Plan")
 
-                # Diet Recommendation
-                final_calories, meal_plan = diet_recommendation(
-                    predicted_calories, goal
-                )
+    for meal, food in meal_plan.items():
+        st.write(f"**{meal}:** {food}")
 
-            # ==============================
-            # Display Results
-            # ==============================
+    st.markdown('</div>', unsafe_allow_html=True)
 
-            st.subheader("📊 Health Analysis")
-            st.write(f"**BMI:** {bmi}")
-            st.write(f"**Category:** {category}")
-            st.write(f"**Daily Calorie Need:** {final_calories} kcal")
+    # Progress Chart
+    st.markdown('<div class="section">', unsafe_allow_html=True)
+    st.subheader("📈 Weekly Progress")
 
-            st.subheader("🍽 Recommended Meal Plan")
-            for meal, food in meal_plan.items():
-                st.write(f"**{meal}:** {food}")
+    sample_weights = []
+    current_weight = weight
 
-            # Weekly Weight Progress Chart
-            st.subheader("📈 Weekly Weight Progress (Sample Data)")
+    for _ in range(7):
+        if goal == "Weight Loss":
+            current_weight -= random.uniform(0, 0.5)
+        elif goal == "Weight Gain":
+            current_weight += random.uniform(0, 0.5)
 
-            sample_weights = []
-            current_weight = weight
+        sample_weights.append(round(current_weight, 2))
 
-            for _ in range(7):
-                if goal == "Weight Loss":
-                    current_weight -= random.uniform(0, 0.5)
-                elif goal == "Weight Gain":
-                    current_weight += random.uniform(0, 0.5)
-                sample_weights.append(round(current_weight, 2))
+    st.line_chart(sample_weights)
 
-            st.line_chart(sample_weights)
+    st.markdown('</div>', unsafe_allow_html=True)
 
-        except Exception as e:
-            st.error(f"⚠ Something went wrong: {str(e)}")
-
-# ==============================
-# AI Chatbot Section
-# ==============================
+# =============================
+# 🤖 PERSONAL AI DOCTOR CHATBOT
+# =============================
+st.markdown('<div class="section">', unsafe_allow_html=True)
 
 st.subheader("🤖 AI Health Assistant")
 
-user_question = st.text_input("Ask a health-related question:")
+user_question = st.text_input("Ask a medical or health question")
 
 if st.button("Ask AI"):
 
     if user_question.strip() == "":
-        st.warning("Please enter a valid question.")
-    else:
-        with st.spinner("Thinking..."):
-            answer = ask_health_question(user_question)
+        st.warning("Please enter a question")
 
-        st.write("### 🤖 AI Response:")
-        st.write(answer)
+    else:
+        user_data = {
+            "age": age,
+            "gender": gender,
+            "bmi": bmi,
+            "category": category,
+            "calories": final_calories,
+            "goal": goal,
+            "diet_type": diet_type,
+            "gym": gym,
+            "disease": disease
+        }
+
+        with st.spinner("Consulting AI doctor..."):
+            answer = ask_health_question(user_question, user_data)
+
+        st.success(answer)
+
+st.markdown('</div>', unsafe_allow_html=True)

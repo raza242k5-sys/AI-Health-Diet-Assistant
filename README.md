@@ -1,134 +1,137 @@
-# 🧠 AI Health & Diet Recommendation System
+# 🩺 AI Health & Diet Recommendation System
 
-An AI-powered web application that provides personalized health analysis and diet recommendations using Machine Learning and LLM integration.
+An intelligent healthcare web application that combines **Machine Learning + LLM (AI Chatbot)** to provide personalized diet plans, calorie prediction, and smart health guidance.
 
----
-
-## 🚀 Project Overview
-
-This system combines traditional Machine Learning with Large Language Model (LLM) integration to deliver intelligent health recommendations.
-
-It calculates BMI, predicts daily calorie requirements using a Random Forest model, and includes an AI-powered health assistant chatbot.
+🚀 Built using Machine Learning + LLM integration to simulate a real-world AI healthcare assistant.
 
 ---
 
-## ✨ Key Features
+## 🚀 Features
 
-- 📊 BMI Calculation & Health Classification  
-- 🤖 Machine Learning-based Calorie Prediction (Random Forest)  
-- 🍽 Personalized Diet Recommendations  
-- 💬 AI Health Assistant Chatbot (LLM Integration)  
-- 🔐 Secure API Key Handling using .env  
-- 🗂 Modular Project Structure  
+### 🧠 Health Analysis
+- BMI Calculation
+- Health Category Classification
+- Daily Calorie Prediction using ML model
+
+### 🍽 Smart Diet Recommendation
+- Personalized meal plan based on:
+  - Goal (Weight Loss / Gain / Maintain)
+  - Calories
+  - Diet Type (Veg / Non-Veg)
+  - Gym Activity
+  - Health Conditions (Diabetes, Heart)
+
+### 🤖 Personal AI Doctor (LLM)
+- Uses OpenRouter API
+- Gives **personalized health advice**
+- Considers:
+  - BMI
+  - Calories
+  - Goal
+  - Disease
+  - Lifestyle
+
+### 📈 Progress Tracking
+- Weekly weight progress visualization
 
 ---
 
-## 🛠 Tech Stack
+## 🧠 Model Overview
 
-- Python  
-- Streamlit  
-- Scikit-learn  
-- Random Forest  
-- OpenRouter API  
-- python-dotenv  
-- Git & GitHub  
+The system uses a **Random Forest Regressor** for calorie prediction.
 
----
-
-
-## 📊 Model Overview & Performance
-
-The calorie prediction module uses a **Random Forest Regressor**, an ensemble-based machine learning algorithm well-suited for structured tabular data.
-
-### 🔍 Dataset Features:
+### 🔍 Features Used:
 - Age  
 - Gender  
 - Height  
 - Weight  
 - Activity Level  
-- Fitness Goal  
+- Goal  
 
-### ⚙ Model Training Approach:
-- Categorical features encoded using Label Encoding  
-- Random Forest with 200 decision trees  
-- Model trained on the complete dataset  
-
-Due to the limited size of the structured dataset, the model is trained on the full dataset to ensure stable and consistent predictions.
-
-### 🧠 Why Random Forest?
-- Handles non-linear relationships effectively  
-- Reduces overfitting using ensemble learning  
-- Performs strongly on structured health data  
-
-This implementation demonstrates a complete machine learning pipeline including:
-- Data preprocessing  
-- Feature encoding  
-- Model training  
-- Real-time prediction integration within a web application  
+### ⚙ Approach:
+- Label Encoding for categorical features  
+- Model trained on full dataset (due to limited synthetic data)  
+- Real-time prediction integrated with UI  
 
 ---
 
+## 🏗 System Architecture
 
-## 📦 How to Run
-
-1. Clone the repository:
-
-   git clone https://github.com/raza242k5-sys/AI-Health-Diet-System.git
-
-
-2. Install dependencies:
-
-   pip install -r requirements.txt
-
-
-3. Create `.env` file:
-
-   OPENROUTER_API_KEY=your_api_key_here
-
-
-4. Run:
-
-   streamlit run app.py
-
-
+![Architecture](images/architecture.png)
 ---
 
-## 🎯 Learning Outcomes
+## 🛠 Tech Stack
 
-- Built ML prediction system  
-- Integrated LLM API  
-- Implemented secure environment variables  
-- Structured modular Python project 
+### 💻 Language
+- Python
+
+### 🌐 Framework
+- Streamlit
+
+### 🤖 Machine Learning
+- scikit-learn (Random Forest)
+
+### 📊 Data Handling
+- pandas, numpy
+
+### 🔗 API
+- OpenRouter (LLM API)
+
+### 🔐 Security
+- python-dotenv (.env for API keys)
 
 ---
 
 ## 📸 Screenshots
 
 ### 🏠 Dashboard
-![Dashboard](images/dashboard.png)
+![Dashboard](images/dashboard-view.png)
 
----
+### 📊 Health Analysis
+![Health](images/bmi-analysis.png)
 
-### 📊 Health Analysis & Calorie Prediction
-![Health Analysis](images/health-analysis.png)
-
----
-
-### 💬 AI Chatbot
+### 🤖 AI Chatbot
 ![Chatbot](images/chatbot-response.png)
 
 ---
 
-## 👨‍💻 Author
+## ⚙️ How to Run
 
-**Raza Ur Rahman**  
-Computer Engineering Student 
+### 1️⃣ Clone Repository
+```bash
+git clone https://github.com/raza242k5-sys/AI-Health-Diet-System.git
+cd AI-Health-Diet-System
 
-AI Developer 
+2️⃣ Install Dependencies
+pip install -r requirements.txt
 
-🔗 GitHub: https://github.com/raza242k5-sys  
+3️⃣ Add API Key
+Create .env file:
+OPENROUTER_API_KEY=your_api_key_here
+
+4️⃣ Run App
+streamlit run app.py
+
+🔐 Important
+Do NOT upload .env file to GitHub
+Keep API key secure
+
+
+💡 Future Improvements
+User login & history tracking
+Database integration
+PDF health report generation
+Deep learning food recognition
+Real-time fitness tracking
+
+
+
+👨‍💻 Author
+
+Raza Ur Rahman
+Computer Engineering Student
+
+AI Developer
+
+🔗 GitHub: https://github.com/raza242k5-sys
 🔗 LinkedIn: https://linkedin.com/in/razarahman242k5
-
-
-
-
