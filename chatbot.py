@@ -2,10 +2,11 @@ import requests
 import os
 from dotenv import load_dotenv
 from pathlib import Path
+import streamlit as st
 
 load_dotenv(dotenv_path=Path(".env"))
 
-API_KEY = os.getenv("OPENROUTER_API_KEY")
+API_KEY = st.secrets["OPENROUTER_API_KEY"]
 
 
 def ask_health_question(question, user_data):
