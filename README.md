@@ -103,34 +103,46 @@ git clone https://github.com/raza242k5-sys/AI-Health-Diet-System.git
 cd AI-Health-Diet-System
 ```
 
-2️⃣ Install Dependencies
+### 2️⃣ Install Dependencies
+```bash
 pip install -r requirements.txt
+```
 
-3️⃣ Add API Key
-Create .env file:
+### 3️⃣ Add API Key
+
+Create `.env` file:
+
+```env
 OPENROUTER_API_KEY=your_api_key_here
+```
 
-4️⃣ Run App
+### 4️⃣ Run App
+```bash
 streamlit run app.py
+```
 
-🔐 Important
-Do NOT upload .env file to GitHub
-Keep API key secure
+---
 
+## 🔐 Important
+- Do NOT upload `.env` file to GitHub  
+- Keep API key secure  
 
-💡 Future Improvements
-User login & history tracking
-Database integration
-PDF health report generation
-Deep learning food recognition
-Real-time fitness tracking
+---
 
+## 💡 Future Improvements
+- User login & history tracking  
+- Database integration  
+- PDF health report generation  
+- Deep learning food recognition  
+- Real-time fitness tracking  
 
+---
 
-👨‍💻 Author
-Raza Ur Rahman
-Computer Engineering Student
-AI Developer
+## 👨‍💻 Author
 
-🔗 GitHub: https://github.com/raza242k5-sys
-🔗 LinkedIn: https://linkedin.com/in/razarahman242k5
+**Raza Ur Rahman**  
+Computer Engineering Student  
+AI Developer  
+
+🔗 [GitHub](https://github.com/raza242k5-sys)  
+🔗 [LinkedIn](https://linkedin.com/in/razarahman242k5)
