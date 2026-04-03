@@ -36,8 +36,6 @@ An intelligent healthcare web application that combines **Machine Learning + LLM
   - Disease
   - Lifestyle
 
-### 📈 Progress Tracking
-- Weekly weight progress visualization
 
 ---
 
