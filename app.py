@@ -1,5 +1,4 @@
 import streamlit as st
-import random
 
 from health_calculator import calculate_bmi, bmi_category
 from recommendation_engine import diet_recommendation
@@ -73,7 +72,7 @@ disease = st.sidebar.selectbox(
 )
 
 # =============================
-# Always Calculate Data (FIXED)
+# Always Calculate Data
 # =============================
 bmi = calculate_bmi(weight, height)
 category = bmi_category(bmi)
@@ -91,43 +90,29 @@ final_calories, meal_plan = diet_recommendation(
 # =============================
 if st.sidebar.button("🧠 Generate Health Plan"):
 
-    st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.subheader("📊 Health Analysis")
+    try:
+        # Health Analysis
+        st.markdown('<div class="section">', unsafe_allow_html=True)
+        st.subheader("📊 Health Analysis")
 
-    col1, col2, col3 = st.columns(3)
-    col1.metric("BMI", bmi)
-    col2.metric("Category", category)
-    col3.metric("Calories", f"{final_calories} kcal")
+        col1, col2, col3 = st.columns(3)
+        col1.metric("BMI", bmi)
+        col2.metric("Category", category)
+        col3.metric("Calories", f"{final_calories} kcal")
 
-    st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-    # Diet Plan
-    st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.subheader("🍽 Recommended Diet Plan")
+        # Diet Plan
+        st.markdown('<div class="section">', unsafe_allow_html=True)
+        st.subheader("🍽 Recommended Diet Plan")
 
-    for meal, food in meal_plan.items():
-        st.write(f"**{meal}:** {food}")
+        for meal, food in meal_plan.items():
+            st.write(f"**{meal}:** {food}")
 
-    st.markdown('</div>', unsafe_allow_html=True)
+        st.markdown('</div>', unsafe_allow_html=True)
 
-    # Progress Chart
-    st.markdown('<div class="section">', unsafe_allow_html=True)
-    st.subheader("📈 Weekly Progress")
-
-    sample_weights = []
-    current_weight = weight
-
-    for _ in range(7):
-        if goal == "Weight Loss":
-            current_weight -= random.uniform(0, 0.5)
-        elif goal == "Weight Gain":
-            current_weight += random.uniform(0, 0.5)
-
-        sample_weights.append(round(current_weight, 2))
-
-    st.line_chart(sample_weights)
-
-    st.markdown('</div>', unsafe_allow_html=True)
+    except Exception as e:
+        st.error(f"Error generating plan: {e}")
 
 # =============================
 # 🤖 PERSONAL AI DOCTOR CHATBOT
@@ -144,21 +129,25 @@ if st.button("Ask AI"):
         st.warning("Please enter a question")
 
     else:
-        user_data = {
-            "age": age,
-            "gender": gender,
-            "bmi": bmi,
-            "category": category,
-            "calories": final_calories,
-            "goal": goal,
-            "diet_type": diet_type,
-            "gym": gym,
-            "disease": disease
-        }
+        try:
+            user_data = {
+                "age": age,
+                "gender": gender,
+                "bmi": bmi,
+                "category": category,
+                "calories": final_calories,
+                "goal": goal,
+                "diet_type": diet_type,
+                "gym": gym,
+                "disease": disease
+            }
 
-        with st.spinner("Consulting AI doctor..."):
-            answer = ask_health_question(user_question, user_data)
+            with st.spinner("Consulting AI doctor..."):
+                answer = ask_health_question(user_question, user_data)
 
-        st.success(answer)
+            st.success(answer)
+
+        except Exception as e:
+            st.error(f"API Error: {e}")
 
 st.markdown('</div>', unsafe_allow_html=True)
